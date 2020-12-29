@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <link rel="Using files from web applications"  href="https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications">
+    </head>
+    <body>
+
+        <input type="file" onchange="previewFile()"><br>
+        <img src="" height="200" alt="Image preview...">
+
+        <script type="text/javascript">
+            function previewFile() {
+            const preview = document.querySelector('img');
+            const file = document.querySelector('input[type=file]').files[0];
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+                // convert image file to base64 string
+                preview.src = reader.result;
+            }, false);
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+            }
+        </script>
+
+    </body>
+</html>
